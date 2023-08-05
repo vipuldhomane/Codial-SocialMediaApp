@@ -3,9 +3,10 @@ const router = express.Router();
 
 const homeController = require("../controllers/home_controller");
 
-router.get("/", homeController.home);
+// This is the main index router all the routes will be defined here and further routing calls will be made from here.
 
-router.get("/action", homeController.actionName);
+router.get("/", homeController.home);
+router.use("/users", require("./users"));
 
 console.log("router loaded");
 
