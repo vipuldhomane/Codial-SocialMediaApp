@@ -45,29 +45,6 @@ module.exports.create = async function (req, res) {
   }
 };
 
-// module.exports.create = function (req, res) {
-//   if (req.body.password != req.body.confirm_password) {
-//     return res.redirect("back");
-//   }
-//   User.findOne({ email: req.body.email }, function (error, user) {
-//     if (error) {
-//       console.log("error in finding user in signing up");
-//       return;
-//     }
-//     if (!user) {
-//       User.create(req.body, function (err, user) {
-//         if (err) {
-//           console.log("error in finding user in signing up");
-//           return;
-//         }
-//         return res.redirect("/users/sign-in");
-//       });
-//     } else {
-//       return res.redirect("back");
-//     }
-//   });
-// };
-
 module.exports.createSession = function (req, res) {
-  // ToDo later
+  return res.redirect("/");
 };
