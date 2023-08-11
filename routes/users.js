@@ -5,7 +5,7 @@ const passport = require("passport");
 // Anything after /user/ can be written here
 const usersController = require("../controllers/user_controllers");
 
-router.get("/profile", usersController.profile);
+router.get("/profile", passport.checkAuthentication, usersController.profile);
 
 // Render the sign up page
 router.get("/sign-up", usersController.signUp);

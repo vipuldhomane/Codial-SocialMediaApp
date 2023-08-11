@@ -1,8 +1,11 @@
 const passport = require("passport");
+
 const LocalStrategy = require("passport-local");
 
+// import the database
 const User = require("../models/user");
 
+// create local strategy
 passport.use(
   new LocalStrategy({ usernameField: "email" }, async function (
     email,
@@ -23,6 +26,24 @@ passport.use(
   })
 );
 
+// check if the user is authenticated
+passport.checkAuthentication = function (req, res, next) {
+  // if user is signed in call the next function
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  // if the user is not signed in
+  return res.redirect("/users/sign-in");
+};
+
+passport.setAuthenticatedUser = function (req, res, next) {
+  if (req.isAuthenticated()) {
+    // req.user contains the current signed in user from the sessions and we are just sending this to the locals for the views
+    res.locals.user = res.user;
+  }
+  // call the next fun
+  return next();
+};
 // Serialize user to store in session
 passport.serializeUser(function (user, done) {
   done(null, user.id);

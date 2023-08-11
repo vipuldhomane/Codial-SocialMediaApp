@@ -38,6 +38,7 @@ app.use(
     name: "codial",
     // ToDo change the secret before deployment
     secret: "Blahsomething",
+    saveUninitialized: false,
     resave: false,
     cookie: {
       maxAge: 1000 * 60 * 100,
@@ -47,6 +48,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 // use express router
 app.use("/", require("./routes"));
