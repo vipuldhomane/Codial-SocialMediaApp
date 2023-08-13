@@ -26,6 +26,22 @@ passport.use(
   })
 );
 
+// Serialize user to store in session // passing the user to the req
+passport.serializeUser(function (user, done) {
+  // console.log(user.id);
+  done(null, user.id);
+});
+
+// Deserialize user from session
+passport.deserializeUser(async function (id, done) {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err, null);
+  }
+});
+
 // check if the user is authenticated
 passport.checkAuthentication = function (req, res, next) {
   // if user is signed in call the next function
@@ -44,19 +60,5 @@ passport.setAuthenticatedUser = function (req, res, next) {
   // call the next fun
   return next();
 };
-// Serialize user to store in session
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-
-// Deserialize user from session
-passport.deserializeUser(async function (id, done) {
-  try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch (err) {
-    done(err, null);
-  }
-});
 
 module.exports = passport;

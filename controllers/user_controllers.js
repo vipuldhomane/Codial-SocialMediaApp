@@ -1,9 +1,10 @@
 const User = require("../models/user");
 
 module.exports.profile = function (req, res) {
+  // console.log(req.user);
   return res.render("user_profile", {
     title: "User Profile",
-    // user: "user",
+    user: req.user,
   });
 };
 
@@ -53,5 +54,14 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
+  return res.redirect("/users/profile");
+};
+
+module.exports.destroySession = function (req, res) {
+  req.logout(function (err) {
+    if (err) {
+      console.log("error in signout");
+    }
+  });
   return res.redirect("/");
 };

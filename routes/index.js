@@ -5,11 +5,15 @@ const homeController = require("../controllers/home_controller");
 
 // This is the main index router all the routes will be defined here and further routing calls will be made from here.
 
+// Main Route
 router.get("/", homeController.home);
 
 // define the other routes
+
+// Users Route
 router.use("/users", require("./users"));
 
+// Posts Route
 router.use("/posts", require("./posts"));
 
 // console.log("router loaded");

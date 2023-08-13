@@ -1,1 +1,26 @@
 <h1>Codiel / <%= title %></h1>
+
+<section id="feed-posts">
+  <h4>Posts</h4>
+  <form action="/posts/create/" id="new-psot-form" method="post">
+    <textarea
+      name="content"
+      id=""
+      placeholder="Post Something"
+      cols="30"
+      rows="3"
+    ></textarea>
+    <input type="submit" value="Post" />
+  </form>
+  <div id="posts-list-container">
+    <ul>
+      <% for( post of posts ) { %>
+      <li>
+        <%= post.content %>
+        <small> <%= post.user%> </small>
+      </li>
+
+      <% } %>
+    </ul>
+  </div>
+</section>

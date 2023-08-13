@@ -12,6 +12,12 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 
+// Mongo-store
+const MongoStore = require("connect-mongo");
+
+//SASS
+const sass = require("node-sass"); // not used in this project yet // Rewise this
+
 // Used to get the body
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,6 +39,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views"); // look for
 
 //Authentication part
+// Mongo Store is used to store the session cookie
 app.use(
   session({
     name: "codial",
@@ -43,12 +50,18 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 100,
     },
+    store: new MongoStore({
+      mongoUrl: "mongodb://localhost/codial_development", // MongoDB connection URL
+      autoRemove: "disabled",
+    }),
   })
 );
 
+// Initialize the passport js
 app.use(passport.initialize());
 app.use(passport.session());
 
+//set the cookie to local storage
 app.use(passport.setAuthenticatedUser);
 
 // use express router
