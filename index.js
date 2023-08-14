@@ -16,6 +16,7 @@ const passportLocal = require("./config/passport-local-strategy");
 const MongoStore = require("connect-mongo");
 
 //SASS
+//ToDo figure out how to use sass in the project?
 const sass = require("node-sass"); // not used in this project yet // Rewise this
 
 // Used to get the body
