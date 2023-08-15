@@ -1,9 +1,11 @@
 const router = require("../routes");
 
 const Post = require("../models/post");
+const comment = require("../models/comment");
 
 module.exports.home = async function (req, res) {
-  // console.log(req.user);
+  console.log(req.user);
+  console.log("Home Called");
   try {
     const posts = await Post.find({})
       .populate("user") // Populate the user field in the Post model

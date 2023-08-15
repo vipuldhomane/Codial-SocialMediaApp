@@ -21,3 +21,21 @@ module.exports.create = async function (req, res) {
     console.log(err);
   }
 };
+
+module.exports.destroy = async function (req, res) {
+  try {
+    const comment = await Comment.findById(req.params.id);
+    if (comment.user == req.user.id) {
+      //save the postId to delete from the array of post
+      let postId = comment.user;
+      //delete the comment
+      await comment.deleteOne();
+      console.log("delete comments");
+      // remove the comment id from the post comments array
+      await Post.findByIdAndUpdate(postId, { comments: req.params.id });
+      return res.redirect("back");
+    } else {
+      return res.redirect("back");
+    }
+  } catch (error) {}
+};
