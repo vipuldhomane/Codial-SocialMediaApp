@@ -1,14 +1,16 @@
 <link rel="stylesheet" href="/css/_comment.css" />
-<li>
+<li id="comments-container">
+  <div id="comment">
+    <h3><%= comment.content %></h3>
+
+    <small> <%= comment.user.name %> </small>
+  </div>
   <% if (locals.user && locals.user.id == comment.user.id) { %>
 
-  <small>
-    <a href="/comments/destroy/<%= comment.id%> ">X</a>
-  </small>
+  <div id="delete-comment">
+    <a href="/comments/destroy/<%= comment.id%> "
+      ><span class="material-symbols-outlined"> delete_forever </span></a
+    >
+  </div>
   <% } %>
-  <p>
-    <%= comment.content %>
-    <br />
-    <small> <%= comment.user.name %> </small>
-  </p>
 </li>

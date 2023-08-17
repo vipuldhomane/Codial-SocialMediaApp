@@ -7,23 +7,22 @@ const User = require("../models/user");
 
 // create local strategy
 passport.use(
-  new LocalStrategy({ usernameField: "email" }, async function (
-    email,
-    password,
-    done
-  ) {
-    try {
-      const user = await User.findOne({ email: email });
-      if (!user || user.password !== password) {
-        console.log("Invalid Username/Password");
-        return done(null, false);
+  new LocalStrategy(
+    { usernameField: "email", passReqToCallback: true },
+    async function (req, email, password, done) {
+      try {
+        const user = await User.findOne({ email: email });
+        if (!user || user.password !== password) {
+          req.flash("error", "Invalid Username/Password");
+          return done(null, false);
+        }
+        return done(null, user);
+      } catch (error) {
+        req.flash("error", "Error in finding user");
+        return done(error);
       }
-      return done(null, user);
-    } catch (error) {
-      console.log("Error in finding user --> Passport");
-      return done(error);
     }
-  })
+  )
 );
 
 // Serialize user to store in session // passing the user to the req

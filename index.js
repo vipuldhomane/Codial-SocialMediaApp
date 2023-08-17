@@ -17,7 +17,11 @@ const MongoStore = require("connect-mongo");
 
 //SASS
 //ToDo figure out how to use sass in the project?
-const sass = require("node-sass"); // not used in this project yet // Rewise this
+const sass = require("sass"); // not used in this project yet // Rewise this
+
+//Display Flash msg
+const flash = require("connect-flash");
+const customMware = require("./config/middleware");
 
 // Used to get the body
 app.use(express.urlencoded({ extended: true }));
@@ -64,6 +68,9 @@ app.use(passport.session());
 
 //set the cookie to local storage
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 // use express router
 app.use("/", require("./routes"));

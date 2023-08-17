@@ -1,5 +1,6 @@
 const Comment = require("../models/comment");
 const Post = require("../models/post");
+
 module.exports.create = async function (req, res) {
   try {
     const post = await Post.findById(req.body.post);
@@ -15,6 +16,7 @@ module.exports.create = async function (req, res) {
 
       post.comments.push(comment);
       await post.save();
+      req.flash("success", "Comment Created Successfully");
       res.redirect("/");
     }
   } catch (err) {
@@ -30,9 +32,10 @@ module.exports.destroy = async function (req, res) {
       let postId = comment.user;
       //delete the comment
       await comment.deleteOne();
-      console.log("delete comments");
+      // console.log("delete comments");
       // remove the comment id from the post comments array
       await Post.findByIdAndUpdate(postId, { comments: req.params.id });
+      req.flash("success", "Comment Deleted Successfully");
       return res.redirect("back");
     } else {
       return res.redirect("back");

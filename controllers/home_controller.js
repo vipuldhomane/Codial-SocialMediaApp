@@ -15,8 +15,8 @@ module.exports.home = async function (req, res) {
         populate: {
           path: "user", // Populate the user field in the Comment model
         },
-      })
-      .exec();
+      });
+    // .exec();
     // find all the users to show on home screen
     const users = await User.find({});
     return res.render("home", {

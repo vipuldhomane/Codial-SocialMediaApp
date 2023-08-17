@@ -58,17 +58,25 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
-  return res.redirect("/users/profile");
+  req.flash("success", "Logged in Successfully");
+  return res.redirect("/");
 };
 
 module.exports.destroySession = function (req, res) {
   req.logout(function (err) {
     if (err) {
-      console.log("error in signout");
+      console.log("Error in signout:", err);
+      // Handle the error if needed
+      return res.redirect("back");
     }
+
+    // Flash message
+    req.flash("success", "Logged Out Successfully");
+
+    return res.redirect("/");
   });
-  return res.redirect("/");
 };
+
 module.exports.update = async function (req, res) {
   try {
     await User.findByIdAndUpdate(req.params.id, req.body);

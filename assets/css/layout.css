@@ -1,10 +1,13 @@
 body {
-  margin: 0;
-  /* text-align: center; */
-  background-color: rgb(237, 190, 190);
+  min-height: 100vh;
+  /* height: 100%; */
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: sans-serif;
+  padding: 0px;
 }
-
-h1 {
-  font-size: 50px;
-  color: red;
+#layout-main {
+  background-color: rgb(255, 236, 209);
+  min-height: 100vh;
 }

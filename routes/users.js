@@ -10,6 +10,7 @@ router.get(
   passport.checkAuthentication,
   usersController.profile
 );
+router.get("/profile", passport.checkAuthentication, usersController.profile);
 router.post(
   "/update/:id",
   passport.checkAuthentication,
