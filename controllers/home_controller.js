@@ -5,10 +5,9 @@ const Comment = require("../models/comment");
 const User = require("../models/user");
 
 module.exports.home = async function (req, res) {
-  // console.log(req.user);
-  // console.log("Home Called");
   try {
     const posts = await Post.find({})
+      .sort("-createdAt") //sort in reverse order of created at
       .populate("user") // Populate the user field in the Post model
       .populate({
         path: "comments",
