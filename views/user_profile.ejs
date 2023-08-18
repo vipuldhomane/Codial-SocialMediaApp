@@ -2,8 +2,20 @@
 
 <h1>Codiel User || <%= user.name %></h1>
 
+<img src="<%= user.avatar %>" alt="User Avatar" width="150" height="150" />
+
+<img
+  src=""
+  id="previewAvatar"
+  alt="preview avatar"
+  style="display: none; width: 100px; height: 100px"
+/>
 <% if (user.id == profile_user.id) { %>
-<form action="/users/update/<%= profile_user.id %> " method="post">
+<form
+  action="/users/update/<%= profile_user.id %> "
+  method="post"
+  enctype="multipart/form-data"
+>
   <input
     type="text"
     name="name"
@@ -18,9 +30,20 @@
     value="<%= profile_user.email %>"
     required
   />
+  <div id="upload-preview">
+    <input
+      type="file"
+      name="avatar"
+      id="avatar"
+      placeholder="Profile Image"
+      onchange="previewAvatar()"
+    />
+  </div>
   <input type="submit" value="submit" />
 </form>
 <% }else{ %>
 <p><%= profile_user.name %></p>
 <p><%= profile_user.email %></p>
 <% } %>
+
+<script src="/js/user_profile.js"></script>

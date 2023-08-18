@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
 
 module.exports.profile = async function (req, res) {
   // console.log(req.user);
@@ -77,11 +79,55 @@ module.exports.destroySession = function (req, res) {
   });
 };
 
+// module.exports.update = async function (req, res) {
+//   try {
+//     await User.findByIdAndUpdate(req.params.id, req.body);
+//     return res.redirect("back");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 module.exports.update = async function (req, res) {
-  try {
-    await User.findByIdAndUpdate(req.params.id, req.body);
-    return res.redirect("back");
-  } catch (error) {
-    console.log(error);
+  // check if the user making request is same as the profile to be updated
+  if (req.user.id == req.params.id) {
+    try {
+      let user = await User.findById(req.params.id);
+
+      // accessing the uploaded image with the help of multer
+      // uploadedAvatar is defined in the user model
+      User.uploadedAvatar(req, res, function (error) {
+        if (error) {
+          console.log(`***Multer Error : ${error}`);
+        }
+        user.name = req.body.name;
+        user.email = req.body.email;
+
+        //see if the avatar already exists the delete the previous one. then add the new one.
+
+        if (req.file) {
+          let filePath = path.join(__dirname, "..", user.avatar);
+
+          // console.log(fs.existsSync(filePath));
+          // console.log(filePath);
+
+          if (user.avatar && fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath); // the path is stored in the user.avatar in user model
+          }
+          // this is saving the path (String) of the uploaded file to the avatar avatar field of user
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+        // console.log(req.file);
+
+        user.save();
+        req.flash("success", "Updated Successfully");
+        return res.redirect("back");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    req.flash("error", "User does not match");
+    console.log("User signed in");
   }
 };

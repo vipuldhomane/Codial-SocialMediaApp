@@ -23,6 +23,8 @@ const sass = require("sass"); // not used in this project yet // Rewise this
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 
+// Make the uploads path available to browser
+app.use("/uploads", express.static(__dirname + "/uploads"));
 // Used to get the body
 app.use(express.urlencoded({ extended: true }));
 
