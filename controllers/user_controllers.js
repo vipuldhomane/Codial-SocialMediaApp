@@ -79,15 +79,6 @@ module.exports.destroySession = function (req, res) {
   });
 };
 
-// module.exports.update = async function (req, res) {
-//   try {
-//     await User.findByIdAndUpdate(req.params.id, req.body);
-//     return res.redirect("back");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 module.exports.update = async function (req, res) {
   // check if the user making request is same as the profile to be updated
   if (req.user.id == req.params.id) {

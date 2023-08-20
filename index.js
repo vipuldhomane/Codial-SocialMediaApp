@@ -12,13 +12,14 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 const passportJWT = require("./config/passport-jwt-strategy");
+const passportGoogle = require("./config/passport-google-oauth2-strategy");
 
 // Mongo-store
 const MongoStore = require("connect-mongo");
 
 //SASS
-//ToDo figure out how to use sass in the project?
-const sass = require("sass"); // not used in this project yet // Rewise this
+//FIXME: ToDo figure out how to use sass in the project?
+const sass = require("sass");
 
 //Display Flash msg
 const flash = require("connect-flash");
@@ -26,7 +27,8 @@ const customMware = require("./config/middleware");
 
 // Make the uploads path available to browser
 app.use("/uploads", express.static(__dirname + "/uploads"));
-// Used to get the body
+
+// Used to get the body in the req
 app.use(express.urlencoded({ extended: true }));
 
 // Used to use the cookies or parse
