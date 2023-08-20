@@ -13,7 +13,7 @@ module.exports.create = async function (req, res) {
 
     //If the request is coming form the ajax
     if (req.xhr) {
-      console.log("ajax req");
+      // console.log("ajax req");
       return res.status(200).json({
         data: {
           post: post,
@@ -42,7 +42,7 @@ module.exports.destroy = async function (req, res) {
 
       // if Req is coming from the xhr or Ajax
       if (req.xhr) {
-        console.log("xhr running");
+        // console.log("xhr running");
         return res.status(200).json({
           data: {
             post_id: req.params.id, // send the post id that will be used in deletePost function

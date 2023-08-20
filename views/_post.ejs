@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="/css/_post.css" />
 
-<li id="post-<%= post._id %>">
+<li id="post-<%= post._id %>" class="post-item">
+  <p id="user-name"><%= post.user.name%></p>
+  <!-- <p><%= post.user.createdAt %></p> -->
   <% if (locals.user && locals.user.id == post.user.id) { %>
 
   <small>
     <a class="delete-post-button" href="/posts/destroy/<%= post.id %> ">X</a>
   </small>
   <% } %>
-  <p><%= post.content %></p>
-  <small> <%= post.user.name%> </small>
+  <p id="post-content"><%= post.content %></p>
 
   <div class="post-comments">
     <% if (locals.user) { %>
