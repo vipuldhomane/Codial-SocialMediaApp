@@ -1,5 +1,6 @@
 const Comment = require("../models/comment");
 const Post = require("../models/post");
+const commentsMailer = require("../mailers/comments_mailer");
 
 module.exports.create = async function (req, res) {
   try {
@@ -7,15 +8,18 @@ module.exports.create = async function (req, res) {
 
     // if post exits create a new comment with comment schema
     if (post) {
-      const comment = await Comment.create({
+      let comment = await Comment.create({
         content: req.body.content,
         post: req.body.post,
         user: req.user._id, // user id is stored in the user object which is serialized by passport
       });
       // Add the comment in the comments array created in post so that comment can be shown below the post
+      comment = await comment.populate("user", "name email");
 
       post.comments.push(comment);
       await post.save();
+
+      commentsMailer.newComment(comment);
       req.flash("success", "Comment Created Successfully");
       res.redirect("/");
     }
