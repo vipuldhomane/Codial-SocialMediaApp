@@ -9,21 +9,44 @@ exports.newComment = (comment) => {
   nodemailer.transporter.sendMail(
     {
       from: "vipultechdev@gmail.com", // sender address
-      to: comment.user.email, // list of receivers
+      to: comment.user.email, // recipient's email address
       subject: "New Comment Published", // Subject line
-      //   text: "Hello world?", // plain text body
-      html: htmlString, // html body
+      html: htmlString, // HTML body
     },
     function (err, info) {
       if (err) {
         console.log("Error in sending mail", err);
-        return;
+      } else {
+        console.log("Message Sent", info);
       }
-      console.log("Message Sent", info);
-      return;
     }
   );
 };
+
+// exports.newComment = (comment) => {
+//   let htmlString = nodemailer.renderTemplate(
+//     { comment: comment },
+//     "/comments/new_comments.ejs"
+//   );
+
+//   nodemailer.transporter.sendMail(
+//     {
+//       from: "vipultechdev@gmail.com", // sender address
+//       to: "comment.user.email", // list of receivers
+//       subject: "New Comment Published", // Subject line
+//       //   text: "Hello world?", // plain text body
+//       html: htmlString, // html body
+//     },
+//     function (err, info) {
+//       if (err) {
+//         console.log("Error in sending mail", err);
+//         return;
+//       }
+//       console.log("Message Sent", info);
+//       return;
+//     }
+//   );
+// };
 
 // exports.newComment = async (comment) => {
 //   try {

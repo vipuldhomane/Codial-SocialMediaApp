@@ -2,6 +2,9 @@ const Comment = require("../models/comment");
 const Post = require("../models/post");
 const commentsMailer = require("../mailers/comments_mailer");
 
+// const queue = require("../config/kue");
+// const commentEmailWorker = require("../workers/comment_email_worker");
+
 module.exports.create = async function (req, res) {
   try {
     const post = await Post.findById(req.body.post);
@@ -14,12 +17,24 @@ module.exports.create = async function (req, res) {
         user: req.user._id, // user id is stored in the user object which is serialized by passport
       });
       // Add the comment in the comments array created in post so that comment can be shown below the post
-      comment = await comment.populate("user", "name email");
+      comment = await comment.populate("user", "name email"); // populate name and user field in comment with name and email
 
       post.comments.push(comment);
       await post.save();
 
-      commentsMailer.newComment(comment);
+      commentsMailer.newComment(comment); //sending email on successful comment
+
+      // run the command redis-server in wsl else it wont run
+      // This block is dependent on the redis-server which needs to be started every single time
+      // FIXME:
+      // let job = queue.create("emails", comment).save(function (err) {
+      //   if (err) {
+      //     console.log("Error in sending to the queue", err);
+      //     return;
+      //   }
+      //   console.log("job enqueued ", job.id);
+      // });
+
       req.flash("success", "Comment Created Successfully");
       res.redirect("/");
     }
