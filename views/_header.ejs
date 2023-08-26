@@ -5,7 +5,7 @@
 
   <ul>
     <% if (locals.user) { %>
-    <li>
+    <li class="header-list-item">
       <p><%= user.name %></p>
 
       <a href="/users/sign-out"
@@ -14,11 +14,11 @@
     </li>
     <% }else{ %>
 
-    <li>
+    <li class="header-list-item">
       <a href="/users/sign-in"> Sign In</a>
     </li>
 
-    <li>
+    <li class="header-list-item">
       <a href="/users/sign-up"> Sign up</a>
     </li>
 

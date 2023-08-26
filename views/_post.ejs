@@ -1,27 +1,50 @@
 <link rel="stylesheet" href="/css/_post.css" />
 
 <li id="post-<%= post._id %>" class="post-item">
-  <p id="user-name"><%= post.user.name%></p>
-  <!-- <p><%= post.user.createdAt %></p> -->
-  <% if (locals.user && locals.user.id == post.user.id) { %>
+  <div id="post-info">
+    <div id="avatar">
+      <% if (post.user.avatar) { %>
+      <img src="<%= post.user.avatar %>" alt="" srcset="" /> <% } %>
+    </div>
+    <div id="user-info-post-time">
+      <p id="user-name"><%= post.user.name%></p>
+      <p id="username">@username</p>
+    </div>
+    <% if (locals.user && locals.user.id == post.user.id) { %>
+      
+    <div id="delete-post-button">
+      <a href="/posts/destroy/<%= post.id %> ">
+        <span class="material-symbols-outlined"> delete_forever </span></a
+        ></a>
+      </div>
+      <% } %>
+    </div>
+    
+    <p id="post-content"><%= post.content %></p>
+    <p id="created-time"><%= post.user.createdAt %></p>
 
-  <small>
-    <a class="delete-post-button" href="/posts/destroy/<%= post.id %> ">X</a>
+    <small>
+      <% if (locals.user){ %>
+          <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                  <%= post.likes.length %> Likes
+          </a>
+      <% }else{ %>
+          <%= post.likes.length %> Likes
+      <% } %>
   </small>
-  <% } %>
-  <p id="post-content"><%= post.content %></p>
 
-  <div class="post-comments">
+  <div id="post-comments">
     <% if (locals.user) { %>
     <form action="/comments/create" method="post">
       <input
+        id="comment-input"
         type="text"
         name="content"
         placeholder="Type Here to add Comment...."
         required
       />
       <input type="hidden" name="post" value="<%= post._id %>" />
-      <input type="submit" value="Add Comment" />
+      <input id="post-comment-btn" type="submit" value="Comment" />
     </form>
 
     <div class="post-comments-list">
@@ -32,3 +55,6 @@
     <% } %>
   </div>
 </li>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+

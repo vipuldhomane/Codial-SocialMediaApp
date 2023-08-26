@@ -5,7 +5,7 @@ footer {
   font-size: 25px;
   font-family: sans-serif;
   font-weight: bold;
-  position: fixed;
-  bottom: 0px;
+  /* position: fixed;
+  bottom: 0px; */
   width: 100%;
 }

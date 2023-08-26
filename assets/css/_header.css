@@ -60,3 +60,7 @@ header a:visited {
 header a:hover {
   transform: scale(1.05);
 }
+
+.header-list-item {
+  margin: 0px 10px;
+}

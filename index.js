@@ -25,6 +25,12 @@ const sass = require("sass");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 
+//Setup socketIO
+const chatServer = require("http").Server(app);
+const chatSocket = require("./config/chat_socket").chatSockets(chatServer);
+chatServer.listen(5000);
+console.log("chat Server is listening on port 5000");
+
 // Make the uploads path available to browser
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
