@@ -1,0 +1,1 @@
+function previewAvatar(){const e=document.querySelector("#previewAvatar"),r=document.querySelector("#avatar").files[0],t=new FileReader;t.addEventListener("load",(function(){e.src=t.result,e.style.display="block"}),!1),r&&t.readAsDataURL(r)}console.log("user");

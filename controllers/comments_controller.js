@@ -53,10 +53,13 @@ module.exports.destroy = async function (req, res) {
       //delete the comment
       await comment.deleteOne();
       // console.log("delete comments");
+
       // Deleting all the likes associated  with the comments
       await Like.deleteMany({ likeable: comment._id, onModel: "Comment" });
+
       // remove the comment id from the post comments array
       await Post.findByIdAndUpdate(postId, { comments: req.params.id });
+
       req.flash("success", "Comment Deleted Successfully");
       return res.redirect("back");
     } else {

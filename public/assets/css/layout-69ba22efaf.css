@@ -1,0 +1,13 @@
+body {
+  min-height: 100vh;
+  /* height: 100%; */
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: sans-serif;
+  padding: 0px;
+}
+#layout-main {
+  background-color: rgb(255, 236, 209);
+  min-height: 100vh;
+}

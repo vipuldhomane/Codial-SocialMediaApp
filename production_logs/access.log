@@ -1,0 +1,27 @@
+::1 - - [12/Sep/2023:06:34:30 +0000] "GET / HTTP/1.1" 200 2788 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [12/Sep/2023:06:34:30 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [12/Sep/2023:06:34:33 +0000] "GET /users/sign-in HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [12/Sep/2023:06:34:37 +0000] "GET /users/auth/google HTTP/1.1" 302 0 "http://localhost:8000/users/sign-in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [12/Sep/2023:06:35:01 +0000] "GET / HTTP/1.1" 304 - "http://localhost:8000/users/sign-in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+[0mGET / [32m200[0m 186.026 ms - 5891[0m
+[0mGET /users/sign-in [36m304[0m 11.682 ms - -[0m
+[0mGET /users/auth/google [36m302[0m 2.151 ms - 0[0m
+[0mGET /users/auth/google/callback?code=4%2F0Adeu5BXHTD7JOCa2BVn3SBjVq1LtqLjNomN6Fm1kVKganx-LZJFXVey6j1Z9dS6wqPkvFA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=consent [0m-[0m - ms - -[0m
+[0mGET /users/auth/google/callback?code=4%2F0Adeu5BWXyP1n9IA8_7z2orx-CYktnXETrwi5IQueb0ZRBrJEijB1iLzD3ijA96DZ48Y4YA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=consent [36m302[0m 528.078 ms - 46[0m
+[0mGET / [32m200[0m 377.315 ms - 11672[0m
+[0mPOST /comments/create [36m302[0m 53.926 ms - 46[0m
+[0mGET / [32m200[0m 62.223 ms - 12322[0m
+[0mGET / [32m200[0m 178.384 ms - 5979[0m
+[0mGET /favicon.ico [33m404[0m 9.702 ms - 150[0m
+[0mGET / [36m304[0m 400.506 ms - -[0m
+[0mGET /favicon.ico [33m404[0m 6.056 ms - 150[0m
+[0mGET / [31m500[0m 79.018 ms - 1554[0m
+[0mGET / [32m200[0m 68.438 ms - 5979[0m
+[0mGET / [31m500[0m 56.920 ms - 1893[0m
+[0mGET / [32m200[0m 76.492 ms - 6035[0m
+[0mGET / [36m304[0m 39.298 ms - -[0m
+[0mGET / [36m304[0m 1726.789 ms - -[0m
+[0mGET /users/sign-in [32m200[0m 6.806 ms - 1954[0m
+[0mGET /users/css/layout.css [33m404[0m 8.931 ms - 159[0m
+[0mPOST /users/create-session [36m302[0m 129.703 ms - 46[0m
+[0mGET / [32m200[0m 152.605 ms - 12774[0m

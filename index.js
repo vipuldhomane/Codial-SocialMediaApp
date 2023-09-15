@@ -1,8 +1,17 @@
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config();
+const logger = require("morgan");
+// console.log(process.env);
 const cookieParser = require("cookie-parser");
 const app = express();
-const port = 8000;
+require("./config/view-helpers")(app);
+
+const port = process.env.PORT || 8000;
 const expressLayouts = require("express-ejs-layouts");
+
+const env = require("./config/environment");
+const path = require("path");
 
 // link the database
 const db = require("./config/mongoose");
@@ -24,9 +33,10 @@ const sass = require("sass");
 //Display Flash msg
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
+const { log } = require("console");
 
 //Setup socketIO
-const chatServer = require("http").Server(app);
+const chatServer = require("http").createServer(app);
 const chatSocket = require("./config/chat_socket").chatSockets(chatServer);
 chatServer.listen(5000);
 console.log("chat Server is listening on port 5000");
@@ -48,7 +58,7 @@ app.set("layout extractScripts", true);
 app.set("layout extractStyles", true);
 
 // Define folder for static files
-app.use(express.static("./assets")); // look for static files inside assets folder
+app.use(express.static(env.asset_path)); // look for static files inside assets folder
 
 // Set up views engine
 app.set("view engine", "ejs");
@@ -60,7 +70,7 @@ app.use(
   session({
     name: "codial",
     // ToDo change the secret before deployment
-    secret: "Blahsomething",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -82,6 +92,7 @@ app.use(passport.setAuthenticatedUser);
 
 app.use(flash());
 app.use(customMware.setFlash);
+app.use(logger(env.morgan.mode, env.morgan.options));
 
 // use express router
 app.use("/", require("./routes"));

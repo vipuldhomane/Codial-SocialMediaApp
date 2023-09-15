@@ -5,6 +5,7 @@ const likeSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
     },
+    // This defines the object id od the liked object
     likeable: {
       type: mongoose.Schema.Types.ObjectId,
       require: true,

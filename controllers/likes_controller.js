@@ -4,12 +4,11 @@ const Comment = require("../models/comment");
 
 module.exports.toggleLike = async function (req, res) {
   try {
-    //likes/toggleLike/?id=asdfasd&type=post
     let likeable;
     let deleted = false;
 
     // check if the like is made on post or comment. populate the likes to that schema where like request is made
-    if (req.query.type == "post") {
+    if (req.query.type == "Post") {
       likeable = await Post.findById(req.query.id).populate("likes");
     } else {
       likeable = await Comment.findById(req.query.id).populate("likes");
@@ -17,9 +16,9 @@ module.exports.toggleLike = async function (req, res) {
 
     // check if the like already exits
     let existingLike = await Like.findOne({
-      likeable: req.query._id, // check the id of post or comment
+      likeable: req.query.id, // check the id of post or comment
       onModel: req.query.type, // check the type of schema
-      user: req.user.id, // check the user id of the user
+      user: req.user._id, // check the user id of the user
     });
 
     // if a like is already made then delete that like
@@ -27,8 +26,8 @@ module.exports.toggleLike = async function (req, res) {
       // pull the like form the array
       likeable.likes.pull(existingLike._id);
       likeable.save();
-      Like.deleteOne({ _id: existingLike._id });
-      // existingLike.remove();
+      // Like.deleteOne({ _id: existingLike._id });
+      existingLike.deleteOne();
       deleted = true;
     } else {
       // make a new like

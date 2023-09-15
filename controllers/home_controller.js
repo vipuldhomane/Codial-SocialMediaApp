@@ -14,11 +14,17 @@ module.exports.home = async function (req, res) {
         populate: {
           path: "user", // Populate the user field in the Comment ref
         },
+        // populate: {
+        //   path: "likes", // Populate the likes on comments on post
+        // },
+      })
+      .populate({
+        path: "comments",
         populate: {
-          path: "likes", // Populate the user field in the Comment ref
+          path: "likes",
         },
       })
-      .populate("likes"); // populate the likes field in  Post model
+      .populate("likes"); // populate the likes on Post
 
     // .exec();
     // find all the users to show on home screen
