@@ -46,3 +46,13 @@
 [0mGET /css/layout.csgit%20s [33m404[0m 3.776 ms - 159[0m
 [0mGET / [32m200[0m 42.186 ms - 6035[0m
 [0mGET / [36m304[0m 42.721 ms - -[0m
+[0mGET / [36m304[0m 357.247 ms - -[0m
+[0mGET /favicon.ico [33m404[0m 6.399 ms - 150[0m
+[0mGET /users/sign-in [32m200[0m 6.030 ms - 1954[0m
+[0mGET /users/css/layout.css [33m404[0m 3.409 ms - 159[0m
+[0mPOST /users/create-session [36m302[0m 139.518 ms - 46[0m
+[0mGET / [32m200[0m 160.887 ms - 12774[0m
+[0mGET /users/auth/google/callback?code=4%2F0Adeu5BUWJXNbkuPdUMjnlrFlTKlRvigL_gbvbciYTmlJv-CvPj-i6aaFpopwZy0NgD0H0A&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=2&prompt=consent [36m302[0m 750.995 ms - 46[0m
+[0mGET / [32m200[0m 53.223 ms - 13550[0m
+[0mGET /users/auth/google/callback?code=4%2F0AfJohXlf4hVOQ-RGYvfq0oy87aVx6pIR-vCX8z2KbJevX67d5VOjefZcioEceygPwPKDlw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=2&prompt=consent [36m302[0m 670.062 ms - 46[0m
+[0mGET / [36m304[0m 56.594 ms - -[0m
