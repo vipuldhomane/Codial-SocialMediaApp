@@ -25,3 +25,24 @@
 [0mGET /users/css/layout.css [33m404[0m 8.931 ms - 159[0m
 [0mPOST /users/create-session [36m302[0m 129.703 ms - 46[0m
 [0mGET / [32m200[0m 152.605 ms - 12774[0m
+[0mGET / [32m200[0m 157.994 ms - 6039[0m
+[0mGET /css/layout.csgit%20s [33m404[0m 15.078 ms - 159[0m
+[0mGET /css/layout.csgit%20s [33m404[0m 2.470 ms - 159[0m
+[0mGET /favicon.ico [33m404[0m 1.140 ms - 150[0m
+[0mGET / [36m304[0m 42.786 ms - -[0m
+[0mGET /css/layout.csgit%20s [33m404[0m 9.685 ms - 159[0m
+[0mGET / [36m304[0m 32.743 ms - -[0m
+[0mGET /css/layout.csgit%20s [33m404[0m 4.076 ms - 159[0m
+::1 - - [15/Sep/2023:07:40:47 +0000] "GET / HTTP/1.1" 200 2848 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [15/Sep/2023:07:40:47 +0000] "GET /css/layout.csgit%20s HTTP/1.1" 404 159 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [15/Sep/2023:07:40:48 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [15/Sep/2023:07:40:48 +0000] "GET /css/layout.csgit%20s HTTP/1.1" 404 159 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [15/Sep/2023:07:40:49 +0000] "GET /users/sign-in HTTP/1.1" 200 1958 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [15/Sep/2023:07:40:49 +0000] "GET /users/css/layout.csgit%20s HTTP/1.1" 404 165 "http://localhost:8000/users/sign-in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [15/Sep/2023:07:40:52 +0000] "GET /users/auth/google HTTP/1.1" 302 0 "http://localhost:8000/users/sign-in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+[0mGET / [32m200[0m 89.003 ms - 6039[0m
+[0mGET /css/layout.csgit%20s [33m404[0m 10.879 ms - 159[0m
+[0mGET / [36m304[0m 42.398 ms - -[0m
+[0mGET /css/layout.csgit%20s [33m404[0m 3.776 ms - 159[0m
+[0mGET / [32m200[0m 42.186 ms - 6035[0m
+[0mGET / [36m304[0m 42.721 ms - -[0m
