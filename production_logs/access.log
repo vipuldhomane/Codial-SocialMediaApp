@@ -167,3 +167,6 @@
 [0mGET / [32m200[0m 35.050 ms - 5464[0m
 [0mGET /users/profile/650afd71bee27737a9439dfa [32m200[0m 10.541 ms - 2511[0m
 [0mGET /users/profile/css/layout.css [33m404[0m 4.573 ms - 167[0m
+[0mGET /users/profile/650afd71bee27737a9439dfa [36m304[0m 21.461 ms - -[0m
+[0mGET /users/profile/css/layout.css [33m404[0m 20.207 ms - 167[0m
+[0mGET / [32m200[0m 52.016 ms - 5251[0m

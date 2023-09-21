@@ -98,6 +98,7 @@ module.exports.update = async function (req, res) {
 
         if (req.file) {
           let filePath = path.join(__dirname, "..", user.avatar);
+          // let filePath = path.join(__dirname, "..", user["avatar"]);
 
           // console.log(fs.existsSync(filePath));
           // console.log(filePath);
