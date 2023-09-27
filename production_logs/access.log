@@ -170,3 +170,7 @@
 [0mGET /users/profile/650afd71bee27737a9439dfa [36m304[0m 21.461 ms - -[0m
 [0mGET /users/profile/css/layout.css [33m404[0m 20.207 ms - 167[0m
 [0mGET / [32m200[0m 52.016 ms - 5251[0m
+[0mGET / [32m200[0m 292.439 ms - 4326[0m
+[0mGET /favicon.ico [33m404[0m 7.442 ms - 150[0m
+[0mGET /users/auth/google/callback?code=4%2F0AfJohXk520pVzYXo0Ku8ZpHKwOWdazSYbIt9bOMxFiQ9RCn48n1YzR09l9dmUOJE-TgCVg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=2&prompt=consent [36m302[0m 1528.631 ms - 46[0m
+[0mGET / [32m200[0m 51.587 ms - 5466[0m

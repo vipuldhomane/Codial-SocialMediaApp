@@ -3,8 +3,8 @@ class ChatEngine {
     this.chatBox = $(`#${chatBoxId}`);
     this.userEmail = userEmail;
 
-    this.socket = io.connect("http://localhost:5000");
-    // this.socket = io.connect("http://13.53.177.135:5000"); // do this for deployment AWS ip
+    // this.socket = io.connect("http://localhost:5000");
+    this.socket = io.connect("http://13.51.234.135:5000"); // do this for deployment AWS ip
 
     if (this.userEmail) {
       this.connectionHandler();
