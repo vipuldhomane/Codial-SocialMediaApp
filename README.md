@@ -1,4 +1,7 @@
 # Codial
+This project is deployed on AWS EC2 
+access this project at 
+http://13.51.234.135:8000/
 
 ## This is a Social Media app made with Nodejs ExpressJS mongoDB
 various Javascript libraries are used in this project like 
